@@ -538,3 +538,15 @@ input[type="tel"]:focus {
   background: #6366f1;
   color: #fff;
 }
+.navbar-logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Desktop Navigation */
+.navbar-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}

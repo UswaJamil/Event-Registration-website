@@ -48,7 +48,10 @@ function Header() {
             <ul className="dropdown-menu">
               {categories.map((cat) => (
                 <li key={cat}>
-                  <Link className="dropdown-item" to={`/events?category=${cat}`}>
+                  <Link
+                    className="dropdown-item"
+                    to={`/events?category=${cat}`}
+                  >
                     {cat}
                   </Link>
                 </li>
@@ -73,11 +76,41 @@ function Header() {
         </button>
       </div>
 
-      
-      
+      {/* Mobile Slide-in Menu Overlay — render only when menuOpen */}
+      {menuOpen && (
+        <div className={`mobile-menu-overlay open`}>
+          <div className="mobile-menu">
+            <button
+              className="close-btn"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close Menu"
+            >
+              ✕
+            </button>
+
+            <Link to="/" onClick={() => setMenuOpen(false)}>
+              Home
+            </Link>
+            {categories.map((cat) => (
+              <Link
+                key={cat}
+                to={`/events?category=${cat}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {cat}
+              </Link>
+            ))}
+            <Link to="/events" onClick={() => setMenuOpen(false)}>
+              All Events
+            </Link>
+            <Link to="/contact" onClick={() => setMenuOpen(false)}>
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
 
 export default Header;
-
