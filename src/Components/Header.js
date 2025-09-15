@@ -1,4 +1,4 @@
-// Header.js
+// src/components/Header.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
@@ -40,7 +40,7 @@ function Header() {
       <div className="navbar-container">
         <div className="navbar-logo">EventPortal</div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop nav */}
         <nav className="navbar-links desktop-only">
           <Link to="/">Home</Link>
           <div className="dropdown">
@@ -48,10 +48,7 @@ function Header() {
             <ul className="dropdown-menu">
               {categories.map((cat) => (
                 <li key={cat}>
-                  <Link
-                    className="dropdown-item"
-                    to={`/events?category=${cat}`}
-                  >
+                  <Link className="dropdown-item" to={`/events?category=${cat}`}>
                     {cat}
                   </Link>
                 </li>
@@ -66,7 +63,7 @@ function Header() {
           <Link to="/contact">Contact Us</Link>
         </nav>
 
-        {/* Mobile Hamburger */}
+        {/* Hamburger on mobile */}
         <button
           className="hamburger"
           onClick={() => setMenuOpen(true)}
@@ -76,9 +73,9 @@ function Header() {
         </button>
       </div>
 
-      {/* Mobile Slide-in Menu Overlay — render only when menuOpen */}
+      {/* Mobile overlay only when open */}
       {menuOpen && (
-        <div className={`mobile-menu-overlay open`}>
+        <div className="mobile-menu-overlay open">
           <div className="mobile-menu">
             <button
               className="close-btn"
@@ -88,9 +85,7 @@ function Header() {
               ✕
             </button>
 
-            <Link to="/" onClick={() => setMenuOpen(false)}>
-              Home
-            </Link>
+            <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
             {categories.map((cat) => (
               <Link
                 key={cat}
@@ -100,12 +95,8 @@ function Header() {
                 {cat}
               </Link>
             ))}
-            <Link to="/events" onClick={() => setMenuOpen(false)}>
-              All Events
-            </Link>
-            <Link to="/contact" onClick={() => setMenuOpen(false)}>
-              Contact Us
-            </Link>
+            <Link to="/events" onClick={() => setMenuOpen(false)}>All Events</Link>
+            <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact Us</Link>
           </div>
         </div>
       )}
@@ -114,3 +105,4 @@ function Header() {
 }
 
 export default Header;
+
