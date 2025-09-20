@@ -7,6 +7,9 @@ out/
 .vscode/
 .DS_Store
 
+
+
+
 # env / keys
 .env
 .env.local
